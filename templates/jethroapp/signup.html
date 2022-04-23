@@ -1,0 +1,31 @@
+{% extends "jethroapp/base.html" %}
+{% load static %}
+{% block body %}
+    
+    {% if Registered %}
+        <h1>Thanks for registering</h1>
+    {% else %}
+        <h1>fill the form below</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {{ userview.as_p }}
+            {{ profileview.as_p }}
+            {% csrf_token %}
+            <input class='btn btb-primary' type="submit" value="Register">
+        </form>
+    {% endif %}
+
+    
+    {% if display %}
+        {% for tab in display %}
+            <p>{{ tab.portfolio }}</p>
+            <img src="/{{ BASIC_DIR }}/{{ tab.profile_pic }}"/>
+            <p>{{ tab.user }}</p>
+            <p>{{ tab.user_id }}</p>
+            <p>{{ tab.id }}</p>
+        {% endfor %}
+    {% else %}
+        <p>No user to show</p>
+    {% endif %}
+        
+
+{% endblock %}

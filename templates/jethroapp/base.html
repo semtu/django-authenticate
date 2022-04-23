@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default navbar-static-top">
+            <!-- <div class="container"> -->
+                <ul class="nav navbar-nav">
+                    <li class="navbar-link">
+                        <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="navbar-link">
+                        <a href="{% url 'form' %}">Form</a>
+                    </li>
+                    <li class="navbar-link">
+                        <a href="{% url 'register' %}">Sign Up</a>
+                    </li>
+                    
+                    {% if user.is_authenticated %}
+                        <li class="navbar-link">
+                            <a href="{% url 'logout' %}"">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="navbar-link">
+                            <a href="{% url 'login' %}"">Login</a>
+                        </li>
+                    {% endif %}
+                    <li class="navbar-link">
+                        <a href="{% url 'admin:index' %}">Admin</a>
+                    </li>
+                </ul>
+            <!-- </div> -->
+        </nav>
+    </div>
+    <div class="container">
+        {% block body %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>

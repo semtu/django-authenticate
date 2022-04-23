@@ -1,0 +1,12 @@
+{% extends "jethroapp/base.html" %}
+{% block body %}
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <p>Username: </p>
+        <input type="text" name="username" placeholder="username">
+        <p>Password: </p>
+        <input type="text" name="password" >
+
+        <input type="submit" value="Login">
+    </form>
+{% endblock %}
